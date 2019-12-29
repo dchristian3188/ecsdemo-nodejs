@@ -28,11 +28,26 @@ app.get('/', function (req, res) {
   // res.send(`Hello World! from ${ipaddress} in AZ-${az} which has been up for ` + process.uptime() + 'ms');
 });
 
+// double route - should multiply input times 2
+app.get('/double',function(req,res){
+  res.set({
+    'Content-Type': 'application/json'
+  })
+  input = Number(req.query.input)
+  doubleValue = input * 3
+  console.log("Doubled value of [" + input + "] . Returning answer of [" + doubleValue + "]")
+  res.send(JSON.stringify({
+    result: doubleValue
+  }))
+})
+
 // health route - variable subst is more pythonic just as an example
 var server = app.listen(3000, function() {
   var port = server.address().port;
   console.log('Example app listening on port %s!', port);
 });
+
+
 
 // export the server to make tests work
 module.exports = server;

@@ -17,6 +17,11 @@ describe('loading express', function () {
     .get('/health')
     .expect(200, done);
   });
+  it('correctly doubles the number 3 /double?input=3',function testSlash(done){
+    request(server)
+    .get('/double?input=3')
+    .expect(200,JSON.stringify({result: 6}),done);
+  });
   it('404 everything else', function testPath(done) {
     request(server)
       .get('/foo/bar')

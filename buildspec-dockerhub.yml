@@ -33,7 +33,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - echo $IMAGE_TAG > code_hash.txt
+      - echo $IMAGE_TAG > src/code_hash.txt
       - docker build -t $DOCKER_HUB_USERNAME/$PROJECT_NAME:$IMAGE_TAG .
       - docker tag $DOCKER_HUB_USERNAME/$PROJECT_NAME:$IMAGE_TAG $DOCKER_HUB_USERNAME/$PROJECT_NAME:$IMAGE_WORD_TAG
       # - docker build -t myimage .
